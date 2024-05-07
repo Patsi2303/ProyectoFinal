@@ -12,5 +12,6 @@ namespace ProyectoFinal.Builder
         void asignarServicioBar();
         void asignarAccesoAreasLudicas();
         void asignarServicioCena();
+        Habitacion devolverHabitacion();
     }
 }

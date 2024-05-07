@@ -9,13 +9,14 @@ namespace ProyectoFinal.Builder
     internal class Director
     {
         IBuilder builderHabitacion = null;
-        public void seleccionarHabitacion(IBuilder builder)
+        public Habitacion seleccionarHabitacion(IBuilder builder)
         {
             builderHabitacion = builder;
             builderHabitacion.asignarDesayuno();
             builderHabitacion.asignarServicioBar();
             builderHabitacion.asignarAccesoAreasLudicas();
             builderHabitacion.asignarServicioCena();
+            return builderHabitacion.devolverHabitacion();
         }
     }
 }
