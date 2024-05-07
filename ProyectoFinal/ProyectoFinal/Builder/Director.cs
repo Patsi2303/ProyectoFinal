@@ -4,9 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProyectoFinal
+namespace ProyectoFinal.Builder
 {
     internal class Director
     {
+        IBuilder builderHabitacion = null;
+        public void seleccionarHabitacion(IBuilder builder)
+        {
+            builderHabitacion = builder;
+            builderHabitacion.asignarDesayuno();
+            builderHabitacion.asignarServicioBar();
+            builderHabitacion.asignarAccesoAreasLudicas();
+            builderHabitacion.asignarServicioCena();
+        }
     }
 }
