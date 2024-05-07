@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProyectoFinal
+namespace ProyectoFinal.DecoratorComposite
 {
     internal abstract class ComponentPaquete
     {
         public string Name { get; set; }
 
-        public ComponentPaquete(string name) 
+        public ComponentPaquete(string name)
         {
             Name = name;
         }

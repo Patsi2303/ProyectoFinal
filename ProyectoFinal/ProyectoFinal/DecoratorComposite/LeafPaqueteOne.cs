@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProyectoFinal
+namespace ProyectoFinal.DecoratorComposite
 {
     internal class LeafPaqueteOne : ComponentPaqueteBasico
     {
@@ -15,9 +15,9 @@ namespace ProyectoFinal
             Habitacion = "1 habitación";
         }
 
-        public override void DetallesPaquete() 
+        public override void DetallesPaquete()
         {
-            Console.WriteLine($"{base.Name}: {Habitacion}");
+            Console.WriteLine($"{Name}: {Habitacion}");
         }
     }
 }

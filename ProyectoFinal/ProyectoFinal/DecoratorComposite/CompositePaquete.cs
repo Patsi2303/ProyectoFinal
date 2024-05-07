@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProyectoFinal.DecoratorComposite;
 
-namespace ProyectoFinal
+namespace ProyectoFinal.DecoratorComposite
 {
     internal class CompositePaquete : ComponentPaqueteBasico
     {
-        List<ComponentPaqueteBasico> listaPaquetes; 
+        List<ComponentPaqueteBasico> listaPaquetes;
         public int Descuento { get; set; }
 
         public CompositePaquete(string name, int descuento) : base(name)
@@ -18,19 +17,19 @@ namespace ProyectoFinal
             Descuento = descuento;
         }
 
-        public void AñadirElemento(ComponentPaqueteBasico e) 
+        public void AñadirElemento(ComponentPaqueteBasico e)
         {
             listaPaquetes.Add(e);
         }
 
-        public void EliminarElemento(ComponentPaqueteBasico e) 
+        public void EliminarElemento(ComponentPaqueteBasico e)
         {
             listaPaquetes.Remove(e);
         }
 
-        public override void DetallesPaquete() 
+        public override void DetallesPaquete()
         {
-            foreach (ComponentPaqueteBasico e in listaPaquetes) 
+            foreach (ComponentPaqueteBasico e in listaPaquetes)
             {
                 e.DetallesPaquete();
             }

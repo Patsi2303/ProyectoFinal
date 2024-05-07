@@ -1,4 +1,6 @@
 ﻿using System;
+//using ProyectoFinal.DecoratorComposite;
+//using ProyectoFinal.DecoratorComposite;
 
 namespace ProyectoFinal
 {
