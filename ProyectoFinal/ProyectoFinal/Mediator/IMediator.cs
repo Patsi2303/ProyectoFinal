@@ -8,5 +8,9 @@ namespace ProyectoFinal.Mediator
 {
     internal interface IMediator
     {
+        void enviar(string mensaje, int nHabitacion, int tipo);
+        void recibirRespuesta(string msj);
+        void añadirColega(ISistema c);
+
     }
 }

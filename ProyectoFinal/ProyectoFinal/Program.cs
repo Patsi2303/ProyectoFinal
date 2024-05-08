@@ -1,5 +1,6 @@
 ﻿using System;
 using ProyectoFinal.DecoratorComposite;
+using ProyectoFinal.Mediator;
 
 namespace ProyectoFinal
 {
@@ -16,7 +17,7 @@ namespace ProyectoFinal
 
             //LeafPaqueteOne paqueteOne = new LeafPaqueteOne("Paquete One");
 
-            Console.WriteLine("--------------Paquete One--------------");
+            /*Console.WriteLine("--------------Paquete One--------------");
             ComponentPaquete paqueteOneBasico = new LeafPaqueteOne("Paquete One");
 
             paqueteOneBasico.DetallesPaquete();
@@ -50,8 +51,21 @@ namespace ProyectoFinal
             ComponentPaquete paqueteBigDecorado = new DecoratorCine(paqueteBigBasico);
             paqueteBigDecorado = new DecoratorKaraoke(paqueteOneDecorado);
             paqueteBigDecorado = new DecoratorSpa(paqueteOneDecorado);
-            paqueteBigDecorado.DetallesPaquete();
+            paqueteBigDecorado.DetallesPaquete();*/
 
+            IMediator mediator = new MediatorRecepcion();
+            ISistema mantenimiento = new Mantenimiento(mediator);
+            ISistema limpieza = new Limpieza(mediator);
+            ISistema cocina = new Cocina(mediator);
+            ISistema bar = new Bar(mediator);
+            ISistema spa = new Spa(mediator);
+            mediator.añadirColega(mantenimiento);
+            mediator.añadirColega(limpieza);
+            mediator.añadirColega(cocina);
+            mediator.añadirColega(bar);
+            mediator.añadirColega(spa);
+            ((MediatorRecepcion)mediator).procesarSolicitud();
+            Console.ReadKey();
         }
     }
 }
