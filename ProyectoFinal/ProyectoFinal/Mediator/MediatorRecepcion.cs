@@ -43,7 +43,7 @@ namespace ProyectoFinal.Mediator
                 Console.WriteLine("El caracter ingresado no es un número. Por favor intente de nuevo");
                 return;
             }
-            Console.WriteLine("Ingrese el un mensaje explicando la solicitud: ");
+            Console.WriteLine("Ingrese un mensaje explicando la solicitud: ");
             string mensaje = Console.ReadLine();
             if (string.IsNullOrEmpty(mensaje)) 
             {

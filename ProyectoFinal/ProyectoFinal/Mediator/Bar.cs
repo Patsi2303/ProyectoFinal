@@ -8,6 +8,7 @@ namespace ProyectoFinal.Mediator
 {
     internal class Bar : ISistema
     {
+
         public Bar(IMediator m) : base(m) { }
         public override void recibirMensaje(string mensaje, int nHabitacion, int tipo)
         {
@@ -22,6 +23,7 @@ namespace ProyectoFinal.Mediator
         }
         public override void responderSolicitud(string mensaje, int nHabitacion)
         {
+
             string msj = $"Servicio de Bar. Se atendera la solicitud: {mensaje}.\nHabitación: {nHabitacion}";
             base.Mediador.recibirRespuesta(msj);
         }
