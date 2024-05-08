@@ -8,7 +8,7 @@ namespace ProyectoFinal.DecoratorComposite
 {
     internal abstract class ComponentPaqueteBasico : ComponentPaquete
     {
-        public ComponentPaqueteBasico(string name) : base(name)
+        public ComponentPaqueteBasico(string name, int descuento) : base(name, descuento)
         {
         }
     }

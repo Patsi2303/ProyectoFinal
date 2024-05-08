@@ -10,6 +10,16 @@ namespace ProyectoFinal.Builder
     {
         Habitacion habitacion = new Habitacion();
 
+        public void asignarNumHabitacion(int num)
+        {
+            habitacion.seleccionarNumHabitacion(num);
+        }
+
+        public void asignarTipoHabitacion()
+        {
+            habitacion.seleccionarTipoHabitacion("Estandar");
+        }
+
         public void asignarAccesoAreasLudicas()
         {
             habitacion.seleccionarAreasLudicas(new AreaEstandar());
@@ -29,8 +39,15 @@ namespace ProyectoFinal.Builder
         {
             habitacion.seleccionarServicioCena(new CenaEstandar());
         }
+
+        public void asignarPrecio() 
+        {
+            habitacion.seleccionarPrecio(200);
+        }
+
         public Habitacion devolverHabitacion()
         {
+            //habitacion.detalleHabitacion();
             return habitacion;
         }
     }

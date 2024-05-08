@@ -8,10 +8,13 @@ namespace ProyectoFinal.Builder
 {
     internal interface IBuilder
     {
+        void asignarNumHabitacion(int num);
+        void asignarTipoHabitacion();
         void asignarDesayuno();
         void asignarServicioBar();
         void asignarAccesoAreasLudicas();
         void asignarServicioCena();
+        void asignarPrecio();
         Habitacion devolverHabitacion();
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
+using ProyectoFinal.Builder;
 using ProyectoFinal.DecoratorComposite;
+using ProyectoFinal.Mediator;
 
 namespace ProyectoFinal
 {
@@ -7,51 +9,37 @@ namespace ProyectoFinal
     {
         static void Main(string[] args)
         {
-            /*ComponentPaquete paqueteOne = new LeafPaqueteOne("Paquete One");
+            /*Director miDirector = new Director();
+            BuilderInteligente builderInteligente = new BuilderInteligente();
 
-            ComponentPaquete paqueteMedium = new CompositePaquete("Paquete Medium", 10);
-            ((CompositePaquete)paqueteMedium).AñadirElemento(paqueteOne);
+            MediatorRecepcion miRecepcion = new MediatorRecepcion();
 
-            ComponentPaquete paqueteBig = new CompositePaquete("Paquete Big", 20);*/
+            ComponentPaquete miPaquete1;
+            ComponentPaquete miPaquete2;
+            ComponentPaquete miPaquete3;
 
-            //LeafPaqueteOne paqueteOne = new LeafPaqueteOne("Paquete One");
+            miPaquete1 = miRecepcion.generarPaqueteOne(miDirector.seleccionarHabitacion(builderInteligente, 1));
+            miPaquete2 = miRecepcion.generarPaqueteMedium(miDirector.seleccionarHabitacion(builderInteligente, 2));
+            miPaquete3 = miRecepcion.generarPaqueteBig(miDirector.seleccionarHabitacion(builderInteligente, 3));
 
-            Console.WriteLine("--------------Paquete One--------------");
-            ComponentPaquete paqueteOneBasico = new LeafPaqueteOne("Paquete One");
+            miPaquete1.MostrarPrecio();
+            miPaquete2.MostrarPrecio();
+            miPaquete3.MostrarPrecio();
 
-            paqueteOneBasico.DetallesPaquete();
+            miPaquete1 = new DecoratorInternet(miPaquete1);
+            miPaquete1.MostrarPrecio();
+            miPaquete1.DetallesPaquete();*/
 
-            ComponentPaquete paqueteOneDecorado = new DecoratorInternet(paqueteOneBasico);
+            Cliente miCliente = new Cliente();
 
-            paqueteOneDecorado.DetallesPaquete();
+            int continuar = 1;
 
-            paqueteOneDecorado = new DecoratorCine(paqueteOneDecorado);
-            paqueteOneDecorado = new DecoratorKaraoke(paqueteOneDecorado);
-            paqueteOneDecorado = new DecoratorSpa(paqueteOneDecorado);
-
-            paqueteOneDecorado.DetallesPaquete();
-
-            Console.WriteLine("--------------Paquete Medium--------------");
-            ComponentPaquete paqueteMediumBasico = new CompositePaquete("Paquete Medium", 10);
-            ((CompositePaquete)paqueteMediumBasico).AñadirElemento((ComponentPaqueteBasico)paqueteOneBasico);
-            ((CompositePaquete)paqueteMediumBasico).AñadirElemento((ComponentPaqueteBasico)paqueteOneBasico);
-            paqueteMediumBasico.DetallesPaquete();
-
-            ComponentPaquete paqueteMedianoDecorado = new DecoratorGimnasio(paqueteMediumBasico);
-            paqueteMedianoDecorado.DetallesPaquete();
-
-            Console.WriteLine("--------------Paquete Big--------------");
-            ComponentPaquete paqueteBigBasico = new CompositePaquete("Paquete Big", 20);
-            ((CompositePaquete)paqueteBigBasico).AñadirElemento((ComponentPaqueteBasico)paqueteOneBasico);
-            ((CompositePaquete)paqueteBigBasico).AñadirElemento((ComponentPaqueteBasico)paqueteMediumBasico);
-            ((CompositePaquete)paqueteBigBasico).AñadirElemento((ComponentPaqueteBasico)paqueteMediumBasico);
-            paqueteBigBasico.DetallesPaquete();
-
-            ComponentPaquete paqueteBigDecorado = new DecoratorCine(paqueteBigBasico);
-            paqueteBigDecorado = new DecoratorKaraoke(paqueteOneDecorado);
-            paqueteBigDecorado = new DecoratorSpa(paqueteOneDecorado);
-            paqueteBigDecorado.DetallesPaquete();
-
+            while (continuar == 1) 
+            {
+                miCliente.reservarHabitacion();
+                Console.WriteLine("Desea resevar otro paquete\n1. Si\n2. No");
+                continuar = int.Parse(Console.ReadLine());
+            }
         }
     }
 }

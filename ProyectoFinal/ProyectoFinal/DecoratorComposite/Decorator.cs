@@ -12,7 +12,7 @@ namespace ProyectoFinal.DecoratorComposite
         public string Extra { get; set; }
         public int Precio { get; set; }
 
-        public Decorator(ComponentPaquete paquete, string extra, int precio) : base(paquete.Name)
+        public Decorator(ComponentPaquete paquete, string extra, int precio) : base(paquete.Name, paquete.Descuento)
         {
             this.paquete = paquete;
             Extra = extra;
@@ -23,6 +23,19 @@ namespace ProyectoFinal.DecoratorComposite
         {
             paquete.DetallesPaquete();
             Console.WriteLine($"Servicio extra: {Extra} por {Precio}Bs.");
+        }
+
+        public override double PrecioPaquete()
+        {
+            double precio = 0;
+            precio = paquete.PrecioPaquete() /* * ((100 - (double)paquete.Descuento) / 100) */ + Precio;
+            return precio;
+        }
+        public override void MostrarPrecio()
+        {
+            double precio = PrecioPaquete();
+            paquete.MostrarPrecio();
+            Console.WriteLine($"Precio con servicios añadidos: {precio}");
         }
     }
 

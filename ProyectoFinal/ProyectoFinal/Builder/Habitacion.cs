@@ -8,39 +8,55 @@ namespace ProyectoFinal.Builder
 {
     internal class Habitacion
     {
+        public int NumHabitacion { get; set; }
+        public string TipoHabitacion { get; set; }
         IDesayuno desayuno;
         IServicioBar serviciobar;
         IAreasLudicas areasludicas;
         IServicioCena serviciocena;
+        public int Precio { get; set; }
 
+        public void seleccionarNumHabitacion(int num) 
+        {
+            NumHabitacion = num;
+        }
+        public void seleccionarTipoHabitacion(string tipo)
+        {
+            TipoHabitacion = tipo;
+        }
         public void seleccionarDesayuno(IDesayuno midesayuno)
         {
             desayuno = midesayuno;
-            Console.WriteLine($"-------------------------------------------\nSELECCION DE DESAYUNO:\n{desayuno.mostrarDesayuno}\n-------------------------------------------");
         }
         public void seleccionarServicioBar(IServicioBar miserviciobar)
         {
             serviciobar = miserviciobar;
-            Console.WriteLine($"-------------------------------------------\nSELECCION DE BAR:\n{serviciobar.mostrarServicioBar}\n-------------------------------------------");
         }
         public void seleccionarAreasLudicas(IAreasLudicas miarealudica)
         {
             areasludicas = miarealudica;
-            Console.WriteLine($"-------------------------------------------\nSELECCION DE ACCESO PARA AREAS LUDICAS:\n{areasludicas.mostrarServicioAreasLudicas}\n-------------------------------------------");
         }
         public void seleccionarServicioCena(IServicioCena miservicioCena)
         {
             serviciocena = miservicioCena;
-            Console.WriteLine($"-------------------------------------------\nSELECCION DE SERVICIO DE CENA:\n{serviciocena.mostrarServicioCena}\n-------------------------------------------");
         }
+
+        public void seleccionarPrecio(int miPrecio)
+        {
+            Precio = miPrecio;
+        }
+
         public void detalleHabitacion()
         {
             Console.WriteLine("-------------------------------------------");
             Console.WriteLine("=======DETALLES DE LA HABITACION SELECCIONADA=======");
+            Console.WriteLine($"Numero de habitacion: {NumHabitacion}");
+            Console.WriteLine($"Tipo de habitacion: {TipoHabitacion}");
             desayuno.mostrarDesayuno();
             serviciobar.mostrarServicioBar();
             areasludicas.mostrarServicioAreasLudicas();
             serviciocena.mostrarServicioCena();
+            Console.WriteLine($"Precio de la habitacion: {Precio}");
             Console.WriteLine("-------------------------------------------");
         }
     }

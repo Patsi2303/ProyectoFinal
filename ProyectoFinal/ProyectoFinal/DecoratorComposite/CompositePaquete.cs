@@ -9,12 +9,10 @@ namespace ProyectoFinal.DecoratorComposite
     internal class CompositePaquete : ComponentPaqueteBasico
     {
         List<ComponentPaqueteBasico> listaPaquetes;
-        public int Descuento { get; set; }
 
-        public CompositePaquete(string name, int descuento) : base(name)
+        public CompositePaquete(string name, int descuento) : base(name, descuento)
         {
             listaPaquetes = new List<ComponentPaqueteBasico>();
-            Descuento = descuento;
         }
 
         public void AñadirElemento(ComponentPaqueteBasico e)
@@ -33,7 +31,25 @@ namespace ProyectoFinal.DecoratorComposite
             {
                 e.DetallesPaquete();
             }
-            Console.WriteLine($"Descuento: {Descuento}");
+        }
+
+        public override double PrecioPaquete()
+        {
+            double precio = 0;
+
+            foreach (ComponentPaqueteBasico e in listaPaquetes)
+            {
+                precio += e.PrecioPaquete() * ((100 - (double)Descuento) / 100);
+            }
+            
+            return precio;
+        }
+
+        public override void MostrarPrecio() 
+        {
+            double precio = PrecioPaquete();
+            double precioFinal = precio /* * ((100 - (double)Descuento) / 100) */ ;
+            Console.WriteLine($"=================\nPaquete {Name}\nDescuento: {Descuento}%\nPrecio con descuento del paquete: {precioFinal}");
         }
     }
 }
