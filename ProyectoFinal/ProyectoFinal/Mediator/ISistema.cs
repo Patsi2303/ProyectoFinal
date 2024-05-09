@@ -8,10 +8,13 @@ namespace ProyectoFinal.Mediator
 {
     internal abstract class ISistema
     {
+        public Dictionary<int, int> registrousos;
+
         private IMediator mediador;
         public IMediator Mediador { get { return mediador; } }
         public ISistema(IMediator m)
         {
+            registrousos = new Dictionary<int, int>();
             this.mediador = m;
         }
 
