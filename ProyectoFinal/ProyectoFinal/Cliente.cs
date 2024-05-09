@@ -55,7 +55,7 @@ namespace ProyectoFinal
                     miPaquete = miRecepcion.generarPaqueteOne(miHabitacion);
                     break;
                 case 2:
-                    miPaquete = miRecepcion.generarPaqueteBig(miHabitacion);
+                    miPaquete = miRecepcion.generarPaqueteMedium(miHabitacion);
                     break;
                 case 3:
                     miPaquete = miRecepcion.generarPaqueteBig(miHabitacion);
@@ -112,16 +112,16 @@ namespace ProyectoFinal
                 InvokerAppHotel miApp = new InvokerAppHotel();
                 int accion = 1;
 
-                while (accion != 3) 
+                while (accion != 4) 
                 {
-                    Console.WriteLine("Que quiere hacer\n1. Programar accion\n2. Ejecutar acciones\n3. Salir");
+                    Console.WriteLine("Que quiere hacer\n1. Programar accion\n2. Eliminar ultima accion\n3. Ejecutar acciones\n4. Salir");
                     accion = int.Parse (Console.ReadLine());
                     int eleccion = 1;
 
                     while (accion == 1 && eleccion != 5) 
                     {
                         CACommand miCommand;
-                        Console.WriteLine("Programar accion:\n1. Programar cortinas\n2. Programar Luz\n3. Programar Musica\n4. Programar Tina\n5. Salir");
+                        Console.WriteLine("Programar accion:\n1. Programar Cortinas\n2. Programar Luz\n3. Programar Musica\n4. Programar Tina\n5. Salir");
                         eleccion = int.Parse(Console.ReadLine()); 
                         switch (eleccion) 
                         {
@@ -148,8 +148,10 @@ namespace ProyectoFinal
                                 break;
                         }
                     }
-
                     if (accion == 2)
+                        miApp.eliminarSolicitud();
+
+                    if (accion == 3)
                         miApp.procesarSolicitudes();
                 }
             }

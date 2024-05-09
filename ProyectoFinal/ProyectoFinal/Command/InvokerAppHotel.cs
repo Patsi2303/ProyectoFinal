@@ -36,6 +36,8 @@ namespace ProyectoFinal.Command
                 Console.WriteLine("-------------------------\nEJECUTANDO SOLICITUDES:");
                 foreach (var solicitud in commands)
                     solicitud.ejecutar();
+
+                commands.Clear();
             }
         }
     }
