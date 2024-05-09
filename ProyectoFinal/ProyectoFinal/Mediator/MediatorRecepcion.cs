@@ -110,6 +110,21 @@ namespace ProyectoFinal.Mediator
 
         public void procesarSolicitud()
         {
+            Console.WriteLine("A que servicio va dirigida su solicitud: ");
+            int tipo;
+            Console.WriteLine("1. Mantenimiento");
+            Console.WriteLine("2. Limpieza");
+            Console.WriteLine("3. Cocina");
+            Console.WriteLine("4. Bar");
+            Console.WriteLine("5. Spa");
+            Console.WriteLine("Ingrese una opcion: ");
+            if (!int.TryParse(Console.ReadLine(), out tipo) || tipo > 5 || tipo < 0)
+            {
+                Console.WriteLine("El caracter ingresado no es valido.");
+                return;
+            }
+
+
             Console.WriteLine("Ingrese el numero de habitacion: ");
             int nHabitacion;
             if(!int.TryParse(Console.ReadLine(), out nHabitacion))
@@ -124,19 +139,7 @@ namespace ProyectoFinal.Mediator
                 Console.WriteLine("No puede enviar un mensaje vacio.");
                 return;
             }
-            Console.WriteLine("A que servicio va dirigida su solicitud: ");
-            int tipo;
-            Console.WriteLine("1. Mantenimiento");
-            Console.WriteLine("2. Limpieza");
-            Console.WriteLine("3. Cocina");
-            Console.WriteLine("4. Bar");
-            Console.WriteLine("5. Spa");
-            Console.WriteLine("Ingrese una opcion: ");
-            if (!int.TryParse(Console.ReadLine(), out tipo) || tipo > 5 || tipo < 1)
-            {
-                Console.WriteLine("El caracter ingresado no es valido. Por favor intente de nuevo");
-                return;
-            }
+            
             enviar(mensaje, nHabitacion, tipo);
             
         }

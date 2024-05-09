@@ -11,7 +11,6 @@ namespace ProyectoFinal
         {
             Cliente miCliente = new Cliente();
 
-<<<<<<< HEAD
             int continuar = 1;
 
             while (continuar == 1) 
@@ -20,11 +19,10 @@ namespace ProyectoFinal
                 Console.WriteLine("Desea resevar otro paquete\n1. Si\n2. No");
                 continuar = int.Parse(Console.ReadLine());
             }
-=======
             ComponentPaquete paqueteMedium = new CompositePaquete("Paquete Medium", 10);
-            ((CompositePaquete)paqueteMedium).AñadirElemento(paqueteOne);
+            //((CompositePaquete)paqueteMedium).AñadirElemento(paqueteOne);
 
-            ComponentPaquete paqueteBig = new CompositePaquete("Paquete Big", 20);*/
+            ComponentPaquete paqueteBig = new CompositePaquete("Paquete Big", 20);
 
             //LeafPaqueteOne paqueteOne = new LeafPaqueteOne("Paquete One");
 
@@ -75,9 +73,13 @@ namespace ProyectoFinal
             mediator.añadirColega(cocina);
             mediator.añadirColega(bar);
             mediator.añadirColega(spa);
-            ((MediatorRecepcion)mediator).procesarSolicitud();
-            Console.ReadKey();
->>>>>>> origin/Mediator
+            while (true)
+            {
+                Console.WriteLine("---------------Solicitud de servicio---------------");
+                ((MediatorRecepcion)mediator).procesarSolicitud();
+                Console.ReadKey();
+            }
+            
         }
     }
 }
