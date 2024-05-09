@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProyectoFinal.Builder;
 using ProyectoFinal.DecoratorComposite;
+using ProyectoFinal.Visitor;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
@@ -27,6 +28,8 @@ namespace ProyectoFinal.Mediator
         ISistema cocina;
         ISistema bar;
         ISistema spa;
+
+        IVisitor visitor;
 
         public MediatorRecepcion() 
         {
@@ -50,6 +53,8 @@ namespace ProyectoFinal.Mediator
             añadirColega(cocina);
             añadirColega(bar);
             añadirColega(spa);
+
+            visitor = new VisitorSistemas();
         }
 
         public Habitacion crearHabitacionEstandar() 
@@ -126,22 +131,8 @@ namespace ProyectoFinal.Mediator
             return;
         }
 
-        public void procesarSolicitud()
+        public void procesarSolicitudEspecifica(int nHabitacion)
         {
-            Console.WriteLine("Ingrese el numero de habitacion: ");
-            int nHabitacion;
-            if(!int.TryParse(Console.ReadLine(), out nHabitacion))
-            {
-                Console.WriteLine("El caracter ingresado no es un número. Por favor intente de nuevo");
-                return;
-            }
-            Console.WriteLine("Ingrese un mensaje explicando la solicitud: ");
-            string mensaje = Console.ReadLine();
-            if (string.IsNullOrEmpty(mensaje)) 
-            {
-                Console.WriteLine("No puede enviar un mensaje vacio.");
-                return;
-            }
             Console.WriteLine("A que servicio va dirigida su solicitud: ");
             int tipo;
             Console.WriteLine("1. Mantenimiento");
@@ -150,13 +141,65 @@ namespace ProyectoFinal.Mediator
             Console.WriteLine("4. Bar");
             Console.WriteLine("5. Spa");
             Console.WriteLine("Ingrese una opcion: ");
-            if (!int.TryParse(Console.ReadLine(), out tipo) || tipo > 5 || tipo < 1)
+            if (!int.TryParse(Console.ReadLine(), out tipo) || tipo > 5 || tipo < 0)
             {
-                Console.WriteLine("El caracter ingresado no es valido. Por favor intente de nuevo");
+                Console.WriteLine("El caracter ingresado no es valido.");
                 return;
             }
-            enviar(mensaje, nHabitacion, tipo);
+
+            Console.WriteLine("Ingrese un mensaje explicando la solicitud: ");
+            string mensaje = Console.ReadLine();
+            if (string.IsNullOrEmpty(mensaje)) 
+            {
+                Console.WriteLine("No puede enviar un mensaje vacio.");
+                return;
+            }
             
+            enviar(mensaje, nHabitacion, tipo);
+        }
+
+        public void procesarSolicitud()
+        {
+            Console.WriteLine("A que servicio va dirigida su solicitud: ");
+            int tipo;
+            Console.WriteLine("1. Mantenimiento");
+            Console.WriteLine("2. Limpieza");
+            Console.WriteLine("3. Cocina");
+            Console.WriteLine("4. Bar");
+            Console.WriteLine("5. Spa");
+            Console.WriteLine("Ingrese una opcion: ");
+            if (!int.TryParse(Console.ReadLine(), out tipo) || tipo > 5 || tipo < 0)
+            {
+                Console.WriteLine("El caracter ingresado no es valido.");
+                return;
+            }
+
+
+            Console.WriteLine("Ingrese el numero de habitacion: ");
+            int nHabitacion;
+            if (!int.TryParse(Console.ReadLine(), out nHabitacion))
+            {
+                Console.WriteLine("El caracter ingresado no es un número. Por favor intente de nuevo");
+                return;
+            }
+            Console.WriteLine("Ingrese un mensaje explicando la solicitud: ");
+            string mensaje = Console.ReadLine();
+            if (string.IsNullOrEmpty(mensaje))
+            {
+                Console.WriteLine("No puede enviar un mensaje vacio.");
+                return;
+            }
+
+            enviar(mensaje, nHabitacion, tipo);
+        }
+
+        public void generarReportes() 
+        {
+            mantenimiento.aceptarVisitor(visitor);
+            limpieza.aceptarVisitor(visitor);
+            cocina.aceptarVisitor(visitor);
+            bar.aceptarVisitor(visitor);
+            spa.aceptarVisitor(visitor);
         }
     }
 }

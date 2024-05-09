@@ -12,10 +12,13 @@ namespace ProyectoFinal
 {
     internal class Cliente
     {
-        MediatorRecepcion miRecepcion = new MediatorRecepcion();
-        Habitacion miHabitacion;
-        ComponentPaquete miPaquete;
-        public Cliente() { }    
+        public MediatorRecepcion miRecepcion;
+        public Habitacion miHabitacion;
+        public ComponentPaquete miPaquete;
+        public Cliente(MediatorRecepcion r) 
+        {
+            miRecepcion = r;
+        }    
 
         public void reservarHabitacion() 
         {
@@ -111,7 +114,7 @@ namespace ProyectoFinal
 
                 while (accion != 3) 
                 {
-                    Console.WriteLine("Que quiere hacer\n1.Programar accion\n2. Ejecutar acciones\n3. Salir");
+                    Console.WriteLine("Que quiere hacer\n1. Programar accion\n2. Ejecutar acciones\n3. Salir");
                     accion = int.Parse (Console.ReadLine());
                     int eleccion = 1;
 
@@ -154,6 +157,11 @@ namespace ProyectoFinal
             {
                 Console.WriteLine("Lo sentimos, su habitacion no puede usar esta funcion.");
             }
+        }
+
+        public void mandarSolicitud() 
+        {
+            miRecepcion.procesarSolicitudEspecifica(miHabitacion.NumHabitacion);
         }
     }
 }

@@ -19,6 +19,7 @@ namespace ProyectoFinal.Mediator
             this.mediador = m;
         }
 
+
         public abstract void responderSolicitud(string mensaje, int nHabitacion);
 
         public abstract void recibirMensaje(string mensaje, int nHabitacion, int tipo);

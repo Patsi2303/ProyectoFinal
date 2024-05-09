@@ -24,7 +24,7 @@ namespace ProyectoFinal.Command
         {
             if (intensidad == "1")
                 Console.WriteLine($"Seleccionando intensidad LEVE de luz en horario: {horario}");
-            if (intensidad == "2")
+            else if (intensidad == "2")
                 Console.WriteLine($"Seleccionando intensidad MEDIA de luz en horario: {horario}");
             else
                 Console.WriteLine($"Seleccionando intensidad ALTA de luz en horario: {horario}");
