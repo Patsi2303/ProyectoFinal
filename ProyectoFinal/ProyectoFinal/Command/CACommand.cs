@@ -14,7 +14,6 @@ namespace ProyectoFinal.Command
         public CACommand(ReceiverHabitacion habitacion)
         {
             this.habitacion = habitacion;
-
         }
 
         public abstract void ejecutar();

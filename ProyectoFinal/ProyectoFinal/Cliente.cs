@@ -1,4 +1,5 @@
 ﻿using ProyectoFinal.Builder;
+using ProyectoFinal.Command;
 using ProyectoFinal.DecoratorComposite;
 using ProyectoFinal.Mediator;
 using System;
@@ -98,6 +99,61 @@ namespace ProyectoFinal
             if (eleccion == 1)
                 miPaquete.DetallesPaquete();
             Console.WriteLine("Gracias por confiar en nosotros");
+        }
+
+        public void usarHabitacionInteligente() 
+        {
+            if (miHabitacion.TipoHabitacion == "Inteligente")
+            {
+                ReceiverHabitacion miReceiver = new ReceiverHabitacion();
+                InvokerAppHotel miApp = new InvokerAppHotel();
+                int accion = 1;
+
+                while (accion != 3) 
+                {
+                    Console.WriteLine("Que quiere hacer\n1.Programar accion\n2. Ejecutar acciones\n3. Salir");
+                    accion = int.Parse (Console.ReadLine());
+                    int eleccion = 1;
+
+                    while (accion == 1 && eleccion != 5) 
+                    {
+                        CACommand miCommand;
+                        Console.WriteLine("Programar accion:\n1. Programar cortinas\n2. Programar Luz\n3. Programar Musica\n4. Programar Tina\n5. Salir");
+                        eleccion = int.Parse(Console.ReadLine()); 
+                        switch (eleccion) 
+                        {
+                            case 1:
+                                miCommand = new CommandCortinas(miReceiver);
+                                miApp.anadirSolicitud(miCommand);
+                                break;
+                            case 2:
+                                miCommand = new CommandLuz(miReceiver);
+                                miApp.anadirSolicitud(miCommand);
+                                break;
+                            case 3:
+                                miCommand = new CommandMusica(miReceiver);
+                                miApp.anadirSolicitud(miCommand);
+                                break;
+                            case 4:
+                                miCommand = new CommandTina(miReceiver);
+                                miApp.anadirSolicitud(miCommand);
+                                break;
+                            case 5:
+                                break;
+                            default:
+                                Console.WriteLine("Ingrese una opcion valida");
+                                break;
+                        }
+                    }
+
+                    if (accion == 2)
+                        miApp.procesarSolicitudes();
+                }
+            }
+            else 
+            {
+                Console.WriteLine("Lo sentimos, su habitacion no puede usar esta funcion.");
+            }
         }
     }
 }

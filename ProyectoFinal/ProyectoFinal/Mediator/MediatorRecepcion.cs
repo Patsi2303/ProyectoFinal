@@ -22,6 +22,12 @@ namespace ProyectoFinal.Mediator
 
         List<ISistema> sistemas;
 
+        ISistema mantenimiento;
+        ISistema limpieza;
+        ISistema cocina;
+        ISistema bar;
+        ISistema spa;
+
         public MediatorRecepcion() 
         {
             miDirector = new Director();
@@ -32,6 +38,18 @@ namespace ProyectoFinal.Mediator
             numHabitacion = 1;
 
             sistemas = new List<ISistema>();
+
+            mantenimiento = new Mantenimiento(this);
+            limpieza = new Limpieza(this);
+            cocina = new Cocina(this);
+            bar = new Bar(this);
+            spa = new Spa(this);
+
+            añadirColega(mantenimiento);
+            añadirColega(limpieza);
+            añadirColega(cocina);
+            añadirColega(bar);
+            añadirColega(spa);
         }
 
         public Habitacion crearHabitacionEstandar() 

@@ -16,28 +16,62 @@ namespace ProyectoFinal.Visitor
         int precioSpa = 20;
         public string visitar(Mantenimiento mantenimiento)
         {
-            //En cada uno solo habria que multiplicar el precio por el contador y ponerlo como un mensaje Console.WriteLine
-            throw new NotImplementedException();
+            string reporte = $"======== Reporte - Mantenimiento ========";
+
+            foreach (var registro in mantenimiento.registroUsos) 
+            {
+                reporte += $"\nHabitacion {registro.Key}. Usos: {registro.Value}. Costo: {precioMantenimiento * registro.Value}";
+            }
+
+            return reporte;
         }
 
         public string visitar(Cocina cocina)
         {
-            throw new NotImplementedException();
+            string reporte = $"======== Reporte - Cocina ========";
+
+            foreach (var registro in cocina.registroUsos)
+            {
+                reporte += $"\nHabitacion {registro.Key}. Usos: {registro.Value}. Costo: {precioCocina * registro.Value}";
+            }
+
+            return reporte;
         }
 
         public string visitar(Limpieza limpieza)
         {
-            throw new NotImplementedException();
+            string reporte = $"======== Reporte - Limpieza ========";
+
+            foreach (var registro in limpieza.registroUsos)
+            {
+                reporte += $"\nHabitacion {registro.Key}. Usos: {registro.Value}. Costo: {precioLimpieza * registro.Value}";
+            }
+
+            return reporte;
         }
 
         public string visitar(Bar bar)
         {
-            throw new NotImplementedException();
+            string reporte = $"======== Reporte - Bar ========";
+
+            foreach (var registro in bar.registroUsos)
+            {
+                reporte += $"\nHabitacion {registro.Key}. Usos: {registro.Value}. Costo: {precioBar * registro.Value}";
+            }
+
+            return reporte;
         }
 
         public string visitar(Spa spa)
         {
-            throw new NotImplementedException();
+            string reporte = $"======== Reporte - Spa ========";
+
+            foreach (var registro in spa.registroUsos)
+            {
+                reporte += $"\nHabitacion {registro.Key}. Usos: {registro.Value}. Costo: {precioSpa * registro.Value}";
+            }
+
+            return reporte;
         }
     }
 }

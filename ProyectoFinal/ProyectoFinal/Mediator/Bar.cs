@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoFinal.Visitor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,9 +24,17 @@ namespace ProyectoFinal.Mediator
         }
         public override void responderSolicitud(string mensaje, int nHabitacion)
         {
-
+            if (registroUsos.ContainsKey(nHabitacion))
+                registroUsos[nHabitacion]++;
+            else
+                registroUsos[nHabitacion] = 1;
             string msj = $"Servicio de Bar. Se atendera la solicitud: {mensaje}.\nHabitación: {nHabitacion}";
             base.Mediador.recibirRespuesta(msj);
+        }
+
+        public override void aceptarVisitor(IVisitor visitor) 
+        {
+            Console.WriteLine(visitor.visitar(this));
         }
     }
 }
